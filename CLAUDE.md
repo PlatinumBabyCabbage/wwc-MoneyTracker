@@ -63,3 +63,29 @@ string message = $"总金额：{total}";
 - 优先保持代码简洁清晰，避免过度设计
 - 记账数据相关的类型（交易记录、分类等）优先使用类而非结构体
 - UI 逻辑放在 `.xaml.cs` 代码后置中，业务逻辑独立成服务类
+
+## 项目目录结构规范
+
+每个新建的项目必须遵循以下目录结构：
+
+```
+仓库根目录/
+├── <SolutionName>.sln              ← 解决方案文件，放在根目录
+└── Source/                         ← 所有项目的根目录
+    └── <ProjectName>/              ← 与项目同名的文件夹
+        ├── <ProjectName>.csproj    ← 项目文件，放在此处（不放入Source）
+        └── Source/                 ← 代码文件夹
+            ├── App.xaml / .cs      ← 所有代码文件放在这里
+            ├── MainWindow.xaml / .cs
+            ├── AssemblyInfo.cs
+            └── ...（其他 .cs、.xaml 等代码文件）
+```
+
+### 规则
+
+- 每个项目必须放在 `Source/<ProjectName>/` 目录下
+- 解决方案文件 `.sln` 放在仓库根目录
+- 项目文件 `.csproj` 放在 `Source/<ProjectName>/` 下，**不放入内层 Source**
+- 所有代码文件（`.cs`、`.xaml`、`.xaml.cs` 等）必须放入 `Source/<ProjectName>/Source/` 下
+- `AssemblyInfo.cs` 也是代码文件，放入内层 `Source/`
+- 后续添加的新模型类、服务类、用户控件等代码文件，同样放入内层 `Source/`

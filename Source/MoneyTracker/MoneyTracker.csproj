@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -7,5 +7,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <!-- 将默认包含移除，改为从 Source/ 子目录加载代码文件 -->
+  <ItemGroup>
+    <Compile Remove="**" />
+    <Compile Include="Source\**\*.cs" />
+    <Page Remove="**" />
+    <Page Include="Source\**\*.xaml" Exclude="Source\App.xaml" />
+    <ApplicationDefinition Remove="**" />
+    <ApplicationDefinition Include="Source\App.xaml" />
+  </ItemGroup>
 
 </Project>
